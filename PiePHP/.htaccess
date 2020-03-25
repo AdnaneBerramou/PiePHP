@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /mnt/c/xampp/htdocs/PiePHP/
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_URI} !^/mnt/c/xampp/htdocs/PiePHP?(webroot/.+|index.php|robots.txt)$
+RewriteRule ^ index.php [QSA,L]
