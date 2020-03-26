@@ -4,3 +4,5 @@ require_once(implode(DIRECTORY_SEPARATOR, ['Core', 'autoload.php']));
 
 $app = new Core\Core;
 $app->run();
+
+echo realpath('index.php');
