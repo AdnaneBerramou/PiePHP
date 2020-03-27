@@ -1,9 +1,11 @@
 <?php
 namespace Model ;
 
-class UserModel{
+class UserModel
+{
 
-    public function run() {
+    public function run()
+    {
         echo __CLASS__ . " [ OK ]" . PHP_EOL ;
     }
 
