@@ -11,7 +11,10 @@
 </header>
 
 <section class="row">
-    <input type="search" class="col-12">
+    <form class="row col-12" action="search/page/1" method="get" id="searchBar">
+        <input type="text" name="s" id="search" class="col-11" maxlength="50"  placeholder="Rechercher...">
+        <button type="submit" form="searchBar" id="submitSearch" class="col-1"><i class="fas fa-search"></i></button>
+    </form>
     @foreach($films as $key => $film)
         <div class="movieCard col-6 col-md-3" data-id="{{$film->id}}">
             @if($film->poster == NULL)
@@ -25,7 +28,7 @@
     <div class="col-12 pagesNav">
         @for($i = 1 ; $i <= $nbPages ; $i++)
             @if($currentPage != $i)
-                <a class="nbPage" href='page/{{$i}}'> {{$i}} </a>
+                <a class="nbPage" href="{{preg_replace([BASE_URI.'\//', '/\/page\/(.*)/'], '', $_SERVER['REQUEST_URI']) . '/page/'.$i}}"> {{$i}} </a>
             @else
                 <span class="currentPage nbPage">{{$i}}</span>
             @endif
