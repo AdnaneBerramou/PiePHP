@@ -33,7 +33,7 @@ header{
 }
 
 section{
-    padding-top: 170px;
+    padding: 50px;
     background-color: white;
     .welcomeDiv{
         text-align: center;
@@ -49,5 +49,14 @@ section{
     .movieCard{
         text-align: center;
         padding: 10px;
+    }
+    .pagesNav{
+        text-align: center;
+        .nbPage{
+            font-weight: 600;
+        }
+        .currentPage{
+            text-decoration: underline;
+        }
     }
 }

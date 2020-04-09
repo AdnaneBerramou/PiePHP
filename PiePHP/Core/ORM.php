@@ -120,6 +120,25 @@ class ORM
         return $toReturn;
     }
 
+    public static function pagination($table, $currentPage, $nbElements = 4)
+    {
+        $elements = [];
+        $elementsByPage = $nbElements;
+        $nbElementsReq = Database::getDbConnection()->query('SELECT id FROM '. $table);
+        $nbElements = $nbElementsReq->rowCount();
+        $nbPages = ceil($nbElements / $elementsByPage);
+        if($currentPage == 0 || $currentPage > $nbPages){
+            $currentPage = 1;
+        }
+        $start = ($currentPage - 1) * $elementsByPage;
+        $req = Database::getDbConnection()->query('SELECT * FROM '. $table.' LIMIT '.$start.','.$elementsByPage.';');
+        while($data = $req->fetch(\PDO::FETCH_ASSOC)) {
+            $class = '\Model\\' . ucfirst($table) . 'Model';
+            $elements[] = new $class($data);
+        }
+        return ['elements' => $elements, 'nbPages' => $nbPages, 'currentPage' => $currentPage];
+    }
+
     private static function readyToUse($arr, $type = 1)
     {
         if($type == 1) {

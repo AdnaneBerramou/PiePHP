@@ -4,4 +4,5 @@
 
 Core\Router::connect('/signin', ['controller' => 'user' , 'action' => 'signin']);
 Core\Router::connect('/login', ['controller' => 'user' , 'action' => 'login']);
+Core\Router::connect('/page/{id}', ['controller' => 'app' , 'action' => 'index']);
 Core\Router::connect('/user/{id}', ['controller' => 'user' , 'action' => 'show']);

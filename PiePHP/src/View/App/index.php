@@ -11,22 +11,26 @@
 </header>
 
 <section class="row">
-    <div class="welcomeDiv col-12">
-        <h2>Contribuez au développement de la plus grande banque de films open-source !</h2>
-        <p>Inscrivez-vous dès maintenant en cliquant <a href="signin">ici</a>.</p>
-    </div>
+    <input type="search" class="col-12">
     @foreach($films as $key => $film)
-        <!-- @dif($key < 4) -->
-            <div class="movieCard col-6 col-md-3" data-id="{{$film->id}}">
-                @if($film->poster == NULL)
-                    <img src="webroot/assets/noImage.png">
-                @else
-                <img src="data:image/png;base64, {{$film->poster}}" width=150>
-                @endif
-            <h3>{{$film->titre}}</h1>
-            </div>
-        <!-- @dendif -->
+        <div class="movieCard col-6 col-md-3" data-id="{{$film->id}}">
+            @if($film->poster == NULL)
+                <img src="webroot/assets/noImage.png">
+            @else
+            <img src="data:image/png;base64, {{$film->poster}}" width=150>
+            @endif
+        <h3>{{$film->titre}}</h1>
+        </div>
     @endforeach
+    <div class="col-12 pagesNav">
+        @for($i = 1 ; $i <= $nbPages ; $i++)
+            @if($currentPage != $i)
+                <a class="nbPage" href='page/{{$i}}'> {{$i}} </a>
+            @else
+                <span class="currentPage nbPage">{{$i}}</span>
+            @endif
+        @endfor
+    </div>
 </section>
 
 <footer>
